@@ -1,0 +1,758 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
+
+// mixin
+@mixin dropdown-content() {
+    .dropdown-content {
+        margin-top: 10px;
+        display: none;
+        position: absolute;
+        background-color: white;
+        border-radius: 5px;
+        color: #29679F;
+        min-width: 225px;
+        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+        padding: 10px 0px;
+        z-index: 1;
+
+        p {
+            padding: 8px 20px;
+        }
+
+        & p:hover {
+            background-color: #dddddd;
+            cursor: pointer;
+        }
+    }
+}
+
+@mixin g-content($clear, $p-top, $width, $f-size, $f-weight, $l-height) {
+    clear: $clear;
+    padding-top: $p-top;
+    width: $width;
+    font-size: $f-size;
+    font-weight: $f-weight;
+    line-height: $l-height;
+}
+
+@mixin btn($height, $width) {
+    border-radius: 50px;
+    text-align: center;
+    height: $height;
+    width: $width;
+    border: 0;
+    background: linear-gradient(#0000, rgb(0 0 0/25%)) top/100% 800%;
+    transition: 0.3s;
+    background-color: $secondary-color;
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    svg {
+        color: #292D32;
+    }
+
+    &:hover {
+        background-position: bottom;
+        cursor: pointer;
+    }
+}
+
+@mixin slide() {
+    background-size: cover;
+    background-position: center center;
+}
+
+
+// variable
+$main-color: #15548D;
+$secondary-color: #FAC568;
+$title-color: #333333;
+$contact-color: #052925;
+$main-font: 'Outfit', 'sans-serif';
+$secondary-font: 'Montserrat', sans-serif;
+$main-x-padding: 65px;
+
+
+// root
+* {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-decoration: none;
+    // scroll-behavior: smooth;
+}
+
+body {
+    font-family: $main-font;
+}
+
+// general
+.rectangle-3 {
+    width: 30px;
+    height: 3px;
+    background-color: $secondary-color;
+    margin-top: 8px;
+    float: left;
+}
+
+
+// navbar header
+.navbar {
+    background-color: $main-color;
+    padding-left: $main-x-padding;
+    padding-right: $main-x-padding;
+    padding-top: 35px;
+    height: 720px;
+
+    .nav-wrapper {
+        float: left;
+
+        .logo {
+            width: 148px;
+            float: left;
+        }
+
+        .menu {
+            display: flex;
+            padding-top: 15px;
+            padding-bottom: 15px;
+            padding-left: 65px;
+            font-size: 18px;
+            gap: 40px;
+
+            .menu-link {
+                color: white;
+            }
+        }
+
+        // dropdown
+        .dropdown {
+            @include g-content(none, 0px, auto, 21px, 300, 150%);
+            position: absolute;
+            display: inline-block;
+            width: 200px;
+            padding: 12.5px 0px;
+            padding-left: 70px;
+            background: $main-color;
+            border-radius: 10px;
+            margin-left: 21px;
+            top: 34px;
+            right: 62px;
+            z-index: 1;
+            color: white;
+
+            img {
+                position: absolute;
+                left: 20px;
+                top: 50%;
+                transform: translate(0, -50%);
+            }
+
+            svg {
+                position: absolute;
+                right: 20px;
+                top: 50%;
+                transform: translate(0, -50%);
+            }
+
+            &:hover .dropdown-content {
+                display: block;
+            }
+        }
+
+        @include dropdown-content();
+    }
+}
+
+
+// navbar content
+.nav-content {
+    margin-top: 125px;
+    margin-left: 45px;
+    color: white;
+
+    svg[class^="vector-"] {
+        position: absolute;
+        left: 0;
+    }
+
+    .vector-1 {
+        top: 45px;
+    }
+
+    .vector-2 {
+        top: 264px;
+    }
+
+    .vector-3 {
+        top: 309px;
+    }
+
+    .vector-4 {
+        top: 465px;
+    }
+
+    .vector-5 {
+        top: 590px;
+    }
+
+    .content-title {
+        float: left;
+        font-size: 16px;
+        padding-left: 14px;
+    }
+
+    .content-1 {
+        @include g-content(both, 31px, 675px, 38px, 600, 155%);
+    }
+
+    .content-2 {
+        @include g-content(both, 16px, 645px, 22px, 300, 160%);
+    }
+
+    .content-3 {
+        @include g-content(both, 5px, 645px, 26px, 500, 150%);
+        @include btn(74px, 404px);
+
+        margin-top: 36px;
+    }
+
+    .content-4 {
+        @include g-content(none, 0px, 300px, 22px, 300, 160%);
+        transform: rotate(90deg);
+        position: absolute;
+        display: flex;
+        align-items: center;
+        bottom: 250px;
+        left: -85px;
+        
+        a {
+            color: white;
+        }
+    }
+
+    .nav-img {
+        position: absolute;
+        width: 610px;
+        height: 790px;
+        right: 0px;
+        top: 0px;
+
+        background: url('/img/nav-img.png');
+    }
+}
+
+
+// 1. our workflow
+.main-1 {
+    padding: 98px $main-x-padding;
+    padding-bottom: 0;
+    margin-left: 45px;
+    height: 675px;
+
+    .content-title {
+        float: left;
+        font-size: 17px;
+        padding-left: 14px;
+    }
+
+    .content-1 {
+        @include g-content(both, 24px, 575px, 34px, 600, 150%);
+
+        color: $title-color;
+    }
+
+    .sub-title {
+        font-weight: 600;
+        font-size: 22px;
+        line-height: 150%;
+    }
+
+    svg {
+        position: absolute;
+        left: 0;
+    }
+
+    .vector-1 {
+        top: 800px;
+        z-index: -1;
+    }
+
+    // workflow image
+    $top-1: 1100px;
+    $top-2: 1018px;
+    $top-3: 1066px;
+    $top-4: 890px;
+
+    $left-1: 75px;
+    $left-2: 375px;
+    $left-3: 760px;
+    $left-4: 1034px;
+
+    img {
+        position: absolute;
+    }
+
+    .img-1 {
+        top: $top-1;
+        left: $left-1;
+    }
+
+    .img-2 {
+        top: $top-2;
+        left: $left-2;
+    }
+
+    .img-3 {
+        top: $top-3;
+        left: $left-3;
+    }
+
+    .img-4 {
+        top: $top-4;
+        left: $left-4;
+    }
+
+    // workflow sub-title
+
+    $sub-top: 210px;
+    $sub-left: 35px;
+
+    div[class^="sub-title-"] {
+        position: absolute;
+        font-weight: 600;
+        font-size: 22px;
+    }
+
+    .sub-title-1 {
+        top: $top-1+$sub-top;
+        left: $left-1+$sub-left;
+    }
+
+    .sub-title-2 {
+        top: $top-2+$sub-top;
+        left: $left-2+$sub-left;
+    }
+
+    .sub-title-3 {
+        top: $top-3+$sub-top;
+        left: $left-3+$sub-left;
+    }
+
+    .sub-title-4 {
+        top: $top-4+$sub-top;
+        left: $left-4+$sub-left;
+    }
+
+    // workflow description
+    $desc-top: 250px;
+    $desc-left: 35px;
+
+    div[class^="description-"] {
+        position: absolute;
+        font-weight: 300;
+        font-size: 17px;
+    }
+
+    .description-1 {
+        top: $top-1+$desc-top;
+        left: $left-1+$desc-left;
+    }
+
+    .description-2 {
+        top: $top-2+$desc-top;
+        left: $left-2+$desc-left;
+    }
+
+    .description-3 {
+        top: $top-3+$desc-top;
+        left: $left-3+$desc-left;
+    }
+
+    .description-4 {
+        top: $top-4+$desc-top;
+        left: $left-4+$desc-left;
+    }
+}
+
+// 2. our services
+.main-2 {
+    height: 575px;
+    padding: 98px calc($main-x-padding + 45px);
+    background-color: #F7F8FD;
+
+    .content-title {
+        float: left;
+        font-size: 17px;
+        padding-left: 14px;
+    }
+
+    .content-1 {
+        @include g-content(both, 24px, 700px, 35px, 600, 52.5px);
+
+        color: $title-color;
+    }
+
+    .container {
+        padding-top: 50px;
+        display: flex;
+        gap: 60px;
+        justify-content: space-between;
+
+        div[class^="menu-"] {
+            background-color: white;
+            border: 0.972603px solid #DDDDDD;
+            border-radius: 32px;
+            width: 270px;
+            height: 320px;
+            padding: 40px;
+            position: relative;
+        }
+
+        .title {
+            @include g-content(both, 15px, 420px, 26px, 500, 140%);
+        }
+
+        .title-number {
+            position: absolute;
+            top: 35px;
+            right: 38px;
+            color: $secondary-color;
+            font-size: 31.1233px;
+            font-weight: 600;
+        }
+
+        img[class^="img-"] {
+            height: 160px;
+        }
+
+        .btn-services {
+            @include g-content(both, 0px, 200px, 17px, 400, 140%);
+            @include btn(48px, 200px);
+
+            margin-top: 23px;
+        }
+    }
+}
+
+// 3. our projects
+.main-3 {
+    height: 475px;
+    padding: 98px calc($main-x-padding + 45px);
+    margin-bottom: 75px;
+
+    .main-wrapper {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    .content-title {
+        font-size: 17px;
+        padding: 0 14px;
+    }
+
+    .content-1 {
+        @include g-content(both, 22px, 700px, 40px, 600, 60px);
+
+        width: 100%;
+        text-align: center;
+        color: $title-color;
+    }
+
+    .swiper {
+        margin-top: 68px;
+        height: 380px;
+        border-radius: 52px;
+
+        // slides
+        @for $i from 1 through 3 {
+            .slide-#{$i} {
+                background: linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7)),
+                url('/img/project-' +#{$i}+'.jpg');
+
+                @include slide();
+            }
+        }
+
+        .slide-header {
+            @include g-content(none, 105px, 900px, 22px, 500, 100%);
+            padding-left: 101px;
+        }
+
+        .slide-content {
+            @include g-content(none, 27px, 900px, 53px, 600, 100%);
+            padding-left: 101px;
+        }
+
+        .slide-footer {
+            @include g-content(none, 21px, 900px, 32px, 300, 100%);
+            padding-left: 101px;
+        }
+    }
+}
+
+
+// our testimonials
+.main-4 {
+    background-color: #F7F8FD;
+    height: 690px;
+    padding: 98px calc($main-x-padding + 45px);
+    padding-left: calc($main-x-padding + 45px + 39px);
+    position: relative;
+
+    .content-title {
+        float: left;
+        font-size: 17px;
+        padding: 0 14px;
+    }
+
+    .content-1 {
+        @include g-content(none, 24px, 700px, 37px, 600, 55.5px);
+
+        color: $title-color;
+    }
+
+    .content-2 {
+        width: 500px;
+        height: 200px;
+        margin-top: 40px;
+        padding-left: 29px;
+
+        .quote {
+            float: left;
+            width: 44px;
+        }
+
+        .text {
+            @include g-content(none, 0, 425px, 26px, 300, 37.7px);
+            float: left;
+            padding-left: 24px;
+        }
+    }
+
+    .content-3 {
+        padding-top: 50px;
+
+        .text {
+            float: left;
+            padding-left: 26px;
+            height: 95px;
+
+            .name {
+                @include g-content(none, 5px, 225px, 27px, 600, 39.15px);
+            }
+
+            .status {
+                @include g-content(none, 0px, 250px, 27px, 300, 39.15px);
+            }
+        }
+
+        .yellow-hotel {
+            float: left;
+            clear: left;
+            width: 95px;
+        }
+
+    }
+
+    .ceo {
+        position: absolute;
+        width: 580px;
+        top: 59px;
+        right: 0;
+    }
+
+    .btn {
+        position: absolute;
+        background-color: $main-color;
+        top: 132px;
+        right: 500px;
+        height: 78px;
+        width: 160px;
+        border-radius: 88.8889px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        &:hover {
+            cursor: pointer;
+        }
+
+        svg {
+            color: white;
+        }
+    }
+}
+
+.main-5 {
+    padding-top: 145px;
+    padding: 98px calc($main-x-padding + 45px + 39px);
+    height: 500px;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+
+    .text {
+        padding-top: 93px;
+        font-family: $secondary-font;
+
+        .content-title {
+            float: left;
+            font-size: 17px;
+            padding: 0 14px;
+        }
+
+        .content-1 {
+            @include g-content(both, 20px, 500px, 34px, 700, 54px);
+            color: $contact-color;
+        }
+
+        .content-2 {
+            width: 141px;
+            height: 0px;
+            border: 1px solid #ACA6A6;
+            margin: 20px 0 10px;
+        }
+
+        .content-3 {
+            @include g-content(both, 20px, 500px, 20px, 300, 36px);
+            color: $contact-color;
+        }
+    }
+
+    .form {
+        background-color: #F8F8F8;
+        border-radius: 20px;
+        width: 500px;
+        height: 433px;
+        padding: 40px;
+        display: flex;
+        flex-direction: column;
+
+        label {
+            @include g-content(none, 0px, 250px, 18px, 500, 25px);
+            color: $contact-color;
+            margin-bottom: 10px;
+        }
+
+        input {
+            font-family: $main-font;
+            @include g-content(none, 0px, auto, 17px, 400, 53px);
+            margin-bottom: 30px;
+            border: 1px solid #CCCCCC;
+            border-radius: 12px;
+            padding: 0 18px;
+
+            &:hover,
+            &:focus {
+                border: 1px solid #FAC568;
+                outline: none;
+            }
+        }
+
+        .btn {
+            @include g-content(none, 0px, auto, 20px, 500, 25px);
+            @include btn(72px, auto);
+        }
+    }
+}
+
+// footer
+.footer {
+    @include g-content(none, 0px, auto, 21px, 300, 31.5px);
+    padding: 71px 105px;
+    height: 600px;
+    background-color: $main-color;
+    color: white;
+
+    .logo {
+        width: 192px;
+    }
+
+    .content-1 {
+        margin-top: 63px;
+        display: flex;
+        justify-content: space-between;
+
+        a:hover {
+            cursor: pointer;
+            text-decoration: underline;
+        }
+    }
+
+    .content-2 {
+        height: 0;
+        margin: 61px 0 51px;
+        border: 1px solid rgba(255, 255, 255, 0.6);
+    }
+
+    .content-3 {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        a {
+            color: white;
+            margin-bottom: 5px;
+            text-decoration: underline;
+
+            &:hover {
+                cursor: pointer;
+            }
+        }
+    }
+
+    .content-4 {
+        margin-top: 65px;
+    }
+
+    .content-item {
+        margin-right: auto;
+        display: flex;
+        flex-direction: column;
+        gap: 9px;
+
+        div {
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        svg {
+            margin-right: 24px;
+            margin-top: 9px;
+        }
+    }
+
+    .flex {
+        display: flex;
+    }
+
+    // dropdown
+    .dropdown {
+        @include g-content(none, 0px, auto, 21px, 300, 150%);
+        position: relative;
+        display: inline-block;
+        width: 275.94px;
+        padding: 12.5px 25px;
+        background: #29679F;
+        border-radius: 1696.97px;
+        margin-left: 21px;
+
+        svg {
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translate(0, -50%);
+        }
+
+        &:hover .dropdown-content {
+            display: block;
+        }
+    }
+
+    @include dropdown-content();
+}
